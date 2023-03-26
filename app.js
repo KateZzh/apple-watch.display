@@ -1,21 +1,49 @@
-const dynamicTime = document.querySelector(".wrapper h1");
-const dynamicDate = document.querySelector(".wrapper p");
+// const dynamicTime = document.querySelector(".wrapper h1");
+// const dynamicDate = document.querySelector(".wrapper p");
 
-function doDynamicTime(dynamicTime_) {
-  const time = new Date();
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-  const seconds = time.getSeconds();
-  const clock = `${hours}:${minutes}:${seconds}`;
+// function doDynamicTime(dynamicTime_) {
+//   const time = new Date();
+//   const hours = time.getHours();
+//   const minutes = time.getMinutes();
+//   const seconds = time.getSeconds();
+//   const clock = `${hours}:${minutes}:${seconds}`;
 
-  dynamicTime_.innerHTML = clock;
+//   dynamicTime_.innerHTML = clock;
+// }
+
+// function doDynamicDate(dynamicDate_) {
+//   const time = new Date().toLocaleDateString();
+
+//   dynamicDate_.innerHTML = time;
+// }
+
+// setTimeout(doDynamicDate, 1000, dynamicDate);
+// setInterval(doDynamicTime, 1000, dynamicTime);
+
+
+class AppleWatchDisplay {
+  constructor() {
+    setTimeout(this.doDynamicDate, 1000, this.dynamicDate);
+    setInterval(this.doDynamicTime, 1000, this.dynamicTime);
+  }
+
+  doDynamicTime() {
+    const dynamicTime = document.querySelector(".wrapper h1");
+    const time = new Date();
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+    const clock = `${hours}:${minutes}:${seconds}`;
+
+    dynamicTime.innerHTML = clock;
+  }
+
+  doDynamicDate() {
+    const dynamicDate = document.querySelector(".wrapper p");
+    const time = new Date().toLocaleDateString();
+
+    dynamicDate.innerHTML = time;
+  }
 }
 
-function doDynamicDate(dynamicDate_) {
-  const time = new Date().toLocaleDateString();
-
-  dynamicDate_.innerHTML = time;
-}
-
-setTimeout(doDynamicDate, 1000, dynamicDate);
-setInterval(doDynamicTime, 1000, dynamicTime);
+const appleWatchDisplay = new AppleWatchDisplay();
